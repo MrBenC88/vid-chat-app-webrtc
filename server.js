@@ -9,8 +9,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-  res.redirect(`/${uuidV4()}`);
+  res.sendFile(__dirname + `/${uuidV4()}`);
+  //res.redirect(`/${uuidV4()}`);
 });
 
 app.get("/:room", (req, res) => {
