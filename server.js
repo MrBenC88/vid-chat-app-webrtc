@@ -1,7 +1,6 @@
 const express = require("express");
-const app = express()
-  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+const app = express();
+
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const { v4: uuidV4 } = require("uuid");
@@ -10,6 +9,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
   res.redirect(`/${uuidV4()}`);
 });
 
